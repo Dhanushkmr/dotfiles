@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -75,6 +73,7 @@ ZSH_THEME="robbyrussell"
 
 plugins=(vi-mode git virtualenv zsh-syntax-highlighting zsh-autosuggestions fzf)
 FZF_BASE="$HOME/.fzf"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,47 +103,22 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/dhanush/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/dhanush/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/dhanush/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/dhanush/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 eval "$(starship init zsh)"
 
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-eval "$(pyenv virtualenv-init -)"
-
-# Set it so ~/.pyenv provides Python before others of the same name:
-export PYENV_ROOT=$(pyenv root)
-export PATH="$PYENV_ROOT/shims:$PATH"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(rbenv init -)"
 export PATH="$PATH:/Users/dhanush/.gem/ruby/3.1.0/bin"
 export PATH="$PATH:/Users/dhanush/.gem/ruby/3.1.0/bin/jekyll"
+
 # Entry point for Depthai demo app, enables to run <depthai_launcher> in terminal
 export PATH=$PATH:/Users/dhanush/Luxonis/depthai/entrypoint
 
 export PATH="$PATH:/Users/dhanush/.local/bin"
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export LLVM_SYS_170_PREFIX="/opt/homebrew/opt/llvm"
+
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+. "$HOME/.cargo/env"
